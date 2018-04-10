@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--<classPathEntry location="/Program Files/IBM/SQLLIB/java/db2java.zip" />-->
+    <classPathEntry location="/Workspace/repository/com/h2database/h2/1.4.196/h2-1.4.196.jar" />
+
+
+    <context id="H2Tables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="org.h2.Driver"
+                        connectionURL="jdbc:h2:~/test/ma_centrale;AUTO_SERVER=TRUE"
+                        userId="sa"
+                        password="sa">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="${ibator.model.target.dir}" targetProject="${ibator.src.dir}">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="${ibator.xml.target.dir}"  targetProject="${ibator.resources.dir}">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${ibator.mapper.target.dir}"  targetProject="${ibator.src.dir}">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <table tableName="T_USER" domainObjectName="UserDb" mapperName="UserMapper" />
+        <table tableName="T_PLANT_TYPE" domainObjectName="PlantTypeDb" mapperName="PlantTypeMapper" />
+        <table tableName="T_PLANT" domainObjectName="PlantDb" mapperName="PlantMapper" />
+        <table tableName="T_CONSO" domainObjectName="ConsoDb" mapperName="ConsoMapper" />
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="ID" sqlStatement="" identity="true" />-->
+            <!--<columnOverride column="DATE_FIELD" property="startDate" />-->
+            <!--<ignoreColumn column="FRED" />-->
+            <!--<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />-->
+        <!--</table>-->
+
+    </context>
+</generatorConfiguration>
