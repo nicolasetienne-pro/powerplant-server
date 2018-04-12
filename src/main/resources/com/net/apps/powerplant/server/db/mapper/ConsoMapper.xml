@@ -5,7 +5,8 @@
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="PLANT_ID" jdbcType="INTEGER" property="plantId" />
     <result column="USER_ID" jdbcType="INTEGER" property="userId" />
-    <result column="CONSODATE" jdbcType="TIMESTAMP" property="consodate" />
+    <result column="DATERELEVE" jdbcType="TIMESTAMP" property="datereleve" />
+    <result column="RELEVE" jdbcType="BIGINT" property="releve" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ID, PLANT_ID, USER_ID, CONSODATE
+    ID, PLANT_ID, USER_ID, DATERELEVE, RELEVE
   </sql>
   <select id="selectByExample" parameterType="com.net.apps.powerplant.server.db.ConsoDbExample" resultMap="BaseResultMap">
     select
@@ -100,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="com.net.apps.powerplant.server.db.ConsoDb">
     insert into T_CONSO (ID, PLANT_ID, USER_ID, 
-      CONSODATE)
+      DATERELEVE, RELEVE)
     values (#{id,jdbcType=INTEGER}, #{plantId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
-      #{consodate,jdbcType=TIMESTAMP})
+      #{datereleve,jdbcType=TIMESTAMP}, #{releve,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.net.apps.powerplant.server.db.ConsoDb">
     insert into T_CONSO
@@ -116,8 +117,11 @@
       <if test="userId != null">
         USER_ID,
       </if>
-      <if test="consodate != null">
-        CONSODATE,
+      <if test="datereleve != null">
+        DATERELEVE,
+      </if>
+      <if test="releve != null">
+        RELEVE,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -130,8 +134,11 @@
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="consodate != null">
-        #{consodate,jdbcType=TIMESTAMP},
+      <if test="datereleve != null">
+        #{datereleve,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releve != null">
+        #{releve,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -153,8 +160,11 @@
       <if test="record.userId != null">
         USER_ID = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.consodate != null">
-        CONSODATE = #{record.consodate,jdbcType=TIMESTAMP},
+      <if test="record.datereleve != null">
+        DATERELEVE = #{record.datereleve,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.releve != null">
+        RELEVE = #{record.releve,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -166,7 +176,8 @@
     set ID = #{record.id,jdbcType=INTEGER},
       PLANT_ID = #{record.plantId,jdbcType=INTEGER},
       USER_ID = #{record.userId,jdbcType=INTEGER},
-      CONSODATE = #{record.consodate,jdbcType=TIMESTAMP}
+      DATERELEVE = #{record.datereleve,jdbcType=TIMESTAMP},
+      RELEVE = #{record.releve,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -180,8 +191,11 @@
       <if test="userId != null">
         USER_ID = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="consodate != null">
-        CONSODATE = #{consodate,jdbcType=TIMESTAMP},
+      <if test="datereleve != null">
+        DATERELEVE = #{datereleve,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releve != null">
+        RELEVE = #{releve,jdbcType=BIGINT},
       </if>
     </set>
     where ID = #{id,jdbcType=INTEGER}
@@ -190,7 +204,13 @@
     update T_CONSO
     set PLANT_ID = #{plantId,jdbcType=INTEGER},
       USER_ID = #{userId,jdbcType=INTEGER},
-      CONSODATE = #{consodate,jdbcType=TIMESTAMP}
+      DATERELEVE = #{datereleve,jdbcType=TIMESTAMP},
+      RELEVE = #{releve,jdbcType=BIGINT}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+
+
+  <select id="selectLastInsertedId" resultType="java.lang.Long">
+    SELECT max(id) as "id" from T_CONSO
+  </select>
 </mapper>

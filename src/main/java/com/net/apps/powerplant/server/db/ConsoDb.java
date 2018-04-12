@@ -9,7 +9,9 @@ public class ConsoDb {
 
     private Integer userId;
 
-    private Date consodate;
+    private Date datereleve;
+
+    private Long releve;
 
     public Integer getId() {
         return id;
@@ -35,11 +37,19 @@ public class ConsoDb {
         this.userId = userId;
     }
 
-    public Date getConsodate() {
-        return consodate;
+    public Date getDatereleve() {
+        return datereleve;
     }
 
-    public void setConsodate(Date consodate) {
-        this.consodate = consodate;
+    public void setDatereleve(Date datereleve) {
+        this.datereleve = datereleve;
+    }
+
+    public Long getReleve() {
+        return releve;
+    }
+
+    public void setReleve(Long releve) {
+        this.releve = releve;
     }
 }

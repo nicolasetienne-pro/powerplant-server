@@ -22,6 +22,8 @@ public interface ConsoMapper {
 
     ConsoDb selectByPrimaryKey(Integer id);
 
+    long selectLastInsertedId();
+
     int updateByExampleSelective(@Param("record") ConsoDb record, @Param("example") ConsoDbExample example);
 
     int updateByExample(@Param("record") ConsoDb record, @Param("example") ConsoDbExample example);
