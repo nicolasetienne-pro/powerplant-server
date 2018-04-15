@@ -29,7 +29,7 @@ public class Plant   {
   private Long capacity;
 
   @ApiModelProperty("Consumption history")
-  private List<Conso> consumptions = null;
+  private List<Releve> consumptions = null;
 
 }
 

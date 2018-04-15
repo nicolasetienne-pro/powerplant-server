@@ -58,7 +58,7 @@ public interface PlantRestApi {
     }, tags = {"plant",})
     @ApiResponses(value = {
             @ApiResponse(code = 405, message = "Invalid input", response = Void.class)})
-    default Response addPlant(@ApiParam(value = "Plant object that needs to be added", required = true) Plant body
+    default Response addPlant(@ApiParam(value = "Plant object that needs to be added", required = true) Plant plant
             , @Context SecurityContext securityContext)
             throws NotFoundException {
         return Response.status(Response.Status.METHOD_NOT_ALLOWED).build();
@@ -137,7 +137,7 @@ public interface PlantRestApi {
             @ApiResponse(code = 400, message = "Invalid ID supplied", response = Void.class),
             @ApiResponse(code = 404, message = "Plant not found", response = Void.class),
             @ApiResponse(code = 405, message = "Validation exception", response = Void.class)})
-    default Response updatePlant(@ApiParam(value = "Plant object that needs to be added", required = true) Plant body
+    default Response updatePlant(@ApiParam(value = "Plant object that needs to be added", required = true) Plant plant
             , @Context SecurityContext securityContext)
             throws NotFoundException {
         return Response.status(Response.Status.METHOD_NOT_ALLOWED).build();

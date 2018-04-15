@@ -21,12 +21,17 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <mainClass>com.net.apps.powerplant.server.AppApplication</mainClass>
 
+        <liquibase.contexts>DEV</liquibase.contexts>
+        <dataSource.project.driverClass>org.h2.Driver</dataSource.project.driverClass>
+        <dataSource.project.jdbcURL>jdbc:h2:~/test/ma_centrale;AUTO_SERVER=TRUE</dataSource.project.jdbcURL>
+        <dataSource.project.user>sa</dataSource.project.user>
+        <dataSource.project.password>sa</dataSource.project.password>
+
         <mybatis.generator.overwrite>true</mybatis.generator.overwrite>
         <ibator.xml.target.dir>com.net.apps.powerplant.server.db.mapper</ibator.xml.target.dir>
         <ibator.model.target.dir>com.net.apps.powerplant.server.db</ibator.model.target.dir>
         <ibator.mapper.target.dir>com.net.apps.powerplant.server.db.mapper</ibator.mapper.target.dir>
         <ibator.src.dir>${project.build.sourceDirectory}</ibator.src.dir>
-        <ibator.resources.dir>${project.basedir}/src/main/resources</ibator.resources.dir>
 
         <dropwizard.version>1.1.1</dropwizard.version>
 
@@ -136,20 +141,72 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
-            <!--<plugin>-->
-                <!--<groupId>org.mybatis.generator</groupId>-->
-                <!--<artifactId>mybatis-generator-maven-plugin</artifactId>-->
-                <!--<version>1.3.5</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>Generate MyBatis Artifacts</id>-->
-                        <!--<goals>-->
-                            <!--<goal>generate</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/mybatis-generator</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.5.3</version>
+                <configuration>
+                    <changeLogFile>src/main/resources/assets/db.migration/db.changelog.xml</changeLogFile>
+                    <driver>${dataSource.project.driverClass}</driver>
+                    <url>${dataSource.project.jdbcURL}</url>
+                    <username>${dataSource.project.user}</username>
+                    <password>${dataSource.project.password}</password>
+                    <contexts>${liquibase.contexts}</contexts>
+                    <dropFirst>false</dropFirst>
+                    <verbose>true</verbose>
+
+                    <!--<propertyFileWillOverride>true</propertyFileWillOverride>-->
+                    <!--<propertyFile>${project.build.outputDirectory}/liquibase.properties</propertyFile>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.5</version>
+                <executions>
+                    <execution>
+                        <id>Generate MyBatis Artifacts</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.1</version>

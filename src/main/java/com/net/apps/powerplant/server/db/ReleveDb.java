@@ -2,16 +2,16 @@ package com.net.apps.powerplant.server.db;
 
 import java.util.Date;
 
-public class ConsoDb {
+public class ReleveDb {
     private Integer id;
 
     private Integer plantId;
 
     private Integer userId;
 
-    private Date datereleve;
+    private Date timestamp;
 
-    private Long releve;
+    private Long indexCompteur;
 
     public Integer getId() {
         return id;
@@ -37,19 +37,19 @@ public class ConsoDb {
         this.userId = userId;
     }
 
-    public Date getDatereleve() {
-        return datereleve;
+    public Date getTimestamp() {
+        return timestamp;
     }
 
-    public void setDatereleve(Date datereleve) {
-        this.datereleve = datereleve;
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 
-    public Long getReleve() {
-        return releve;
+    public Long getIndexCompteur() {
+        return indexCompteur;
     }
 
-    public void setReleve(Long releve) {
-        this.releve = releve;
+    public void setIndexCompteur(Long indexCompteur) {
+        this.indexCompteur = indexCompteur;
     }
 }

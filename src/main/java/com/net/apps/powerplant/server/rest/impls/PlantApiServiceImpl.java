@@ -2,12 +2,12 @@ package com.net.apps.powerplant.server.rest.impls;
 
 
 import com.net.apps.powerplant.server.core.ApiResponseMessage;
-import com.net.apps.powerplant.server.core.converter.Converter;
 import com.net.apps.powerplant.server.core.Plant;
 import com.net.apps.powerplant.server.core.PlantType;
-import com.net.apps.powerplant.server.db.ConsoDb;
+import com.net.apps.powerplant.server.core.converter.Converter;
 import com.net.apps.powerplant.server.db.PlantDb;
 import com.net.apps.powerplant.server.db.PlantTypeDb;
+import com.net.apps.powerplant.server.db.ReleveDb;
 import com.net.apps.powerplant.server.db.dao.PlantDao;
 import com.net.apps.powerplant.server.rest.exception.NotFoundException;
 import com.net.apps.powerplant.server.utils.StreamUtils;
@@ -24,6 +24,9 @@ class PlantApiServiceImpl implements PlantApiService, Converter {
 
     @Autowired
     PlantDao plantDao;
+
+    @Autowired
+    ReleveApiService releveService;
 
     private Plant convert(PlantDb plantDb){
         Plant plant = convert(plantDb, Plant.class);
@@ -48,10 +51,6 @@ class PlantApiServiceImpl implements PlantApiService, Converter {
         plantDb.setPlantTypeId(plantTypeId);
 
         if (plantTypeId != null && plantDao.create(plantDb)) {
-            List<ConsoDb> consoDbList = convertList(plant.getConsumptions(), ConsoDb.class);
-            consoDbList.forEach(consoDb -> {
-                consoDb.setPlantId(plantDb.getId());
-            });
             return getPlantById(plantDb.getId(), securityContext);
         } else {
             return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.ERROR, "PlantDb creation failed")).build();
@@ -83,7 +82,7 @@ class PlantApiServiceImpl implements PlantApiService, Converter {
         List<PlantDb> plantsDbs = plantDao.findPlants();
         if (plantsDbs != null) {
             List<Plant> plants = convertList(plantsDbs);
-//            List<Plant> plants = convertList(plantsDbs, Plant.class);
+//            List<Plant> plants = convertToReleveList(plantsDbs, Plant.class);
             return Response.ok().entity(plants).build();
         }
         return Response.noContent().entity(new ApiResponseMessage(ApiResponseMessage.OK, "No plant found")).build();

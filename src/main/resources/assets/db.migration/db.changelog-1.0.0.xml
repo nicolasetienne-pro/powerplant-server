@@ -50,13 +50,15 @@
 
     <changeSet id="4" author="NET" runOnChange="true">
         <sql>DROP TABLE IF EXISTS T_CONSO;</sql>
-        <createTable tableName="t_conso">
+        <sql>DROP TABLE IF EXISTS T_RELEVE;</sql>
+        <createTable tableName="t_releve">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="plant_id"    type="int"/>
             <column name="user_id"     type="int"/>
-            <column name="consoDate"   type="${localDateTimeType}" defaultValueComputed="${now}"/>
+            <column name="timestamp"   type="${localDateTimeType}" defaultValueComputed="${now}"/>
+            <column name="index_compteur"       type="bigint"/>
         </createTable>
     </changeSet>
 

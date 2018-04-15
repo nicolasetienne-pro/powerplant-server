@@ -7,11 +7,11 @@ import com.net.apps.powerplant.server.db.PlantTypeDb;
 
 public interface PlantConverter extends Converter {
 
-//    default Plant convert(PlantDb plantDb){
-//        Plant plant = convert(plantDb, Plant.class);
+//    default Plant convertToReleve(PlantDb plantDb){
+//        Plant plant = convertToReleve(plantDb, Plant.class);
 //        PlantTypeDb plantTypeDb = plantDao.findPlantTypeById(plantDb.getPlantTypeId());
 //        if(plantTypeDb != null){
-//            plant.setType(convert(plantTypeDb, PlantType.class));
+//            plant.setType(convertToReleve(plantTypeDb, PlantType.class));
 //        }
 //    }
 }

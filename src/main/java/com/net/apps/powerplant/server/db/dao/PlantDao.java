@@ -29,12 +29,7 @@ public class PlantDao {
     }
 
     public boolean create(PlantDb plantDb){
-        if(plantMapper.insert(plantDb)>0) {
-            long id = plantMapper.selectLastInsertedId();
-            plantDb.setId(Math.toIntExact(id));
-            return true;
-        }
-        return false;
+        return plantMapper.insert(plantDb) > 0;
     }
 
     public List<PlantDb> findPlants(){

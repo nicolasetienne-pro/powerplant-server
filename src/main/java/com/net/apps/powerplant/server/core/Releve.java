@@ -9,31 +9,27 @@ import lombok.ToString;
 import java.time.LocalDateTime;
 
 /**
- * Conso
+ * Releve
  */
 @Getter
 @Setter
 @EqualsAndHashCode
 @ToString
-public class Conso {
+public class Releve {
   @ApiModelProperty("id")
-  private Long id = null;
+  private Integer id = null;
 
   @ApiModelProperty("plantId")
-  private Long plantId = null;
+  private Integer plantId = null;
 
   @ApiModelProperty("userId")
-  private Long userId = null;
+  private Integer userId = null;
 
-  @ApiModelProperty("quantity")
-  private Double quantity = null;
+  @ApiModelProperty("indexCompteur")
+  private Long indexCompteur = null;
 
-  @ApiModelProperty("consoDate")
-  private LocalDateTime consoDate = null;
+  @ApiModelProperty("timestamp")
+  private LocalDateTime timestamp = null;
 
-  public Conso id(Long id) {
-    this.id = id;
-    return this;
-  }
 }
 

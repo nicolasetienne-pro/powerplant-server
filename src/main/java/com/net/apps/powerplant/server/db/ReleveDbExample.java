@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ConsoDbExample {
+public class ReleveDbExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ConsoDbExample() {
+    public ReleveDbExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -285,63 +285,123 @@ public class ConsoDbExample {
             return (Criteria) this;
         }
 
-        public Criteria andConsodateIsNull() {
-            addCriterion("CONSODATE is null");
+        public Criteria andTimestampIsNull() {
+            addCriterion("TIMESTAMP is null");
             return (Criteria) this;
         }
 
-        public Criteria andConsodateIsNotNull() {
-            addCriterion("CONSODATE is not null");
+        public Criteria andTimestampIsNotNull() {
+            addCriterion("TIMESTAMP is not null");
             return (Criteria) this;
         }
 
-        public Criteria andConsodateEqualTo(Date value) {
-            addCriterion("CONSODATE =", value, "consodate");
+        public Criteria andTimestampEqualTo(Date value) {
+            addCriterion("TIMESTAMP =", value, "timestamp");
             return (Criteria) this;
         }
 
-        public Criteria andConsodateNotEqualTo(Date value) {
-            addCriterion("CONSODATE <>", value, "consodate");
+        public Criteria andTimestampNotEqualTo(Date value) {
+            addCriterion("TIMESTAMP <>", value, "timestamp");
             return (Criteria) this;
         }
 
-        public Criteria andConsodateGreaterThan(Date value) {
-            addCriterion("CONSODATE >", value, "consodate");
+        public Criteria andTimestampGreaterThan(Date value) {
+            addCriterion("TIMESTAMP >", value, "timestamp");
             return (Criteria) this;
         }
 
-        public Criteria andConsodateGreaterThanOrEqualTo(Date value) {
-            addCriterion("CONSODATE >=", value, "consodate");
+        public Criteria andTimestampGreaterThanOrEqualTo(Date value) {
+            addCriterion("TIMESTAMP >=", value, "timestamp");
             return (Criteria) this;
         }
 
-        public Criteria andConsodateLessThan(Date value) {
-            addCriterion("CONSODATE <", value, "consodate");
+        public Criteria andTimestampLessThan(Date value) {
+            addCriterion("TIMESTAMP <", value, "timestamp");
             return (Criteria) this;
         }
 
-        public Criteria andConsodateLessThanOrEqualTo(Date value) {
-            addCriterion("CONSODATE <=", value, "consodate");
+        public Criteria andTimestampLessThanOrEqualTo(Date value) {
+            addCriterion("TIMESTAMP <=", value, "timestamp");
             return (Criteria) this;
         }
 
-        public Criteria andConsodateIn(List<Date> values) {
-            addCriterion("CONSODATE in", values, "consodate");
+        public Criteria andTimestampIn(List<Date> values) {
+            addCriterion("TIMESTAMP in", values, "timestamp");
             return (Criteria) this;
         }
 
-        public Criteria andConsodateNotIn(List<Date> values) {
-            addCriterion("CONSODATE not in", values, "consodate");
+        public Criteria andTimestampNotIn(List<Date> values) {
+            addCriterion("TIMESTAMP not in", values, "timestamp");
             return (Criteria) this;
         }
 
-        public Criteria andConsodateBetween(Date value1, Date value2) {
-            addCriterion("CONSODATE between", value1, value2, "consodate");
+        public Criteria andTimestampBetween(Date value1, Date value2) {
+            addCriterion("TIMESTAMP between", value1, value2, "timestamp");
             return (Criteria) this;
         }
 
-        public Criteria andConsodateNotBetween(Date value1, Date value2) {
-            addCriterion("CONSODATE not between", value1, value2, "consodate");
+        public Criteria andTimestampNotBetween(Date value1, Date value2) {
+            addCriterion("TIMESTAMP not between", value1, value2, "timestamp");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexCompteurIsNull() {
+            addCriterion("INDEX_COMPTEUR is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexCompteurIsNotNull() {
+            addCriterion("INDEX_COMPTEUR is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexCompteurEqualTo(Long value) {
+            addCriterion("INDEX_COMPTEUR =", value, "indexCompteur");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexCompteurNotEqualTo(Long value) {
+            addCriterion("INDEX_COMPTEUR <>", value, "indexCompteur");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexCompteurGreaterThan(Long value) {
+            addCriterion("INDEX_COMPTEUR >", value, "indexCompteur");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexCompteurGreaterThanOrEqualTo(Long value) {
+            addCriterion("INDEX_COMPTEUR >=", value, "indexCompteur");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexCompteurLessThan(Long value) {
+            addCriterion("INDEX_COMPTEUR <", value, "indexCompteur");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexCompteurLessThanOrEqualTo(Long value) {
+            addCriterion("INDEX_COMPTEUR <=", value, "indexCompteur");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexCompteurIn(List<Long> values) {
+            addCriterion("INDEX_COMPTEUR in", values, "indexCompteur");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexCompteurNotIn(List<Long> values) {
+            addCriterion("INDEX_COMPTEUR not in", values, "indexCompteur");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexCompteurBetween(Long value1, Long value2) {
+            addCriterion("INDEX_COMPTEUR between", value1, value2, "indexCompteur");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexCompteurNotBetween(Long value1, Long value2) {
+            addCriterion("INDEX_COMPTEUR not between", value1, value2, "indexCompteur");
             return (Criteria) this;
         }
     }
