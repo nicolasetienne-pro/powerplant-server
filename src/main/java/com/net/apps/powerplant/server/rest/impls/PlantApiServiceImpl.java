@@ -7,7 +7,6 @@ import com.net.apps.powerplant.server.core.PlantType;
 import com.net.apps.powerplant.server.core.converter.Converter;
 import com.net.apps.powerplant.server.db.PlantDb;
 import com.net.apps.powerplant.server.db.PlantTypeDb;
-import com.net.apps.powerplant.server.db.ReleveDb;
 import com.net.apps.powerplant.server.db.dao.PlantDao;
 import com.net.apps.powerplant.server.rest.exception.NotFoundException;
 import com.net.apps.powerplant.server.utils.StreamUtils;
@@ -15,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.SecurityContext;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,20 +43,20 @@ class PlantApiServiceImpl implements PlantApiService, Converter {
     }
 
     @Override
-    public Response addPlant(Plant plant, SecurityContext securityContext) throws NotFoundException {
+    public Response addPlant(Plant plant) throws NotFoundException {
         PlantDb plantDb = convert(plant, PlantDb.class);
         Integer plantTypeId = plant.getType().getId();
         plantDb.setPlantTypeId(plantTypeId);
 
         if (plantTypeId != null && plantDao.create(plantDb)) {
-            return getPlantById(plantDb.getId(), securityContext);
+            return getPlantById(plantDb.getId());
         } else {
             return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.ERROR, "PlantDb creation failed")).build();
         }
     }
 
     @Override
-    public Response deletePlant(Long plantId, String apiKey, SecurityContext securityContext) throws NotFoundException {
+    public Response deletePlant(Long plantId) throws NotFoundException {
         PlantDb plantDb = plantDao.findById(plantId.intValue());
         if (plantDb != null) {
             plantDao.delete(plantDb);
@@ -68,7 +66,7 @@ class PlantApiServiceImpl implements PlantApiService, Converter {
     }
 
     @Override
-    public Response getPlantById(Integer plantId, SecurityContext securityContext) throws NotFoundException {
+    public Response getPlantById(Integer plantId) throws NotFoundException {
         PlantDb plantDb = plantDao.findById(plantId.intValue());
         if (plantDb != null) {
             Plant plant = convert(plantDb);
@@ -78,7 +76,7 @@ class PlantApiServiceImpl implements PlantApiService, Converter {
     }
 
     @Override
-    public Response getPlants(SecurityContext securityContext) throws NotFoundException {
+    public Response getPlants() throws NotFoundException {
         List<PlantDb> plantsDbs = plantDao.findPlants();
         if (plantsDbs != null) {
             List<Plant> plants = convertList(plantsDbs);
@@ -89,7 +87,7 @@ class PlantApiServiceImpl implements PlantApiService, Converter {
     }
 
     @Override
-    public Response getPlantsTypes(SecurityContext securityContext) {
+    public Response getPlantsTypes() {
         List<PlantTypeDb> plantTypes = plantDao.findPlantTypes();
         if (plantTypes != null) {
             return Response.ok(plantTypes).build();
@@ -98,12 +96,12 @@ class PlantApiServiceImpl implements PlantApiService, Converter {
     }
 
     @Override
-    public Response updatePlant(Plant plant, SecurityContext securityContext) throws NotFoundException {
+    public Response updatePlant(Plant plant) throws NotFoundException {
         PlantDb plantDb = convert(plant, PlantDb.class);
         if (plantDao.update(plantDb)) {
 
 //            return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "")).build();
-            return getPlantById(plantDb.getId(), securityContext);
+            return getPlantById(plantDb.getId());
         }
 
         return Response.notModified().entity(new ApiResponseMessage(ApiResponseMessage.OK, "Plant not modified")).build();

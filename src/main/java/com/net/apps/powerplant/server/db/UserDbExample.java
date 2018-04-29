@@ -164,63 +164,73 @@ public class UserDbExample {
             return (Criteria) this;
         }
 
-        public Criteria andPlantTypeIdIsNull() {
-            addCriterion("PLANT_TYPE_ID is null");
+        public Criteria andLoginIsNull() {
+            addCriterion("LOGIN is null");
             return (Criteria) this;
         }
 
-        public Criteria andPlantTypeIdIsNotNull() {
-            addCriterion("PLANT_TYPE_ID is not null");
+        public Criteria andLoginIsNotNull() {
+            addCriterion("LOGIN is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPlantTypeIdEqualTo(Integer value) {
-            addCriterion("PLANT_TYPE_ID =", value, "plantTypeId");
+        public Criteria andLoginEqualTo(String value) {
+            addCriterion("LOGIN =", value, "login");
             return (Criteria) this;
         }
 
-        public Criteria andPlantTypeIdNotEqualTo(Integer value) {
-            addCriterion("PLANT_TYPE_ID <>", value, "plantTypeId");
+        public Criteria andLoginNotEqualTo(String value) {
+            addCriterion("LOGIN <>", value, "login");
             return (Criteria) this;
         }
 
-        public Criteria andPlantTypeIdGreaterThan(Integer value) {
-            addCriterion("PLANT_TYPE_ID >", value, "plantTypeId");
+        public Criteria andLoginGreaterThan(String value) {
+            addCriterion("LOGIN >", value, "login");
             return (Criteria) this;
         }
 
-        public Criteria andPlantTypeIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("PLANT_TYPE_ID >=", value, "plantTypeId");
+        public Criteria andLoginGreaterThanOrEqualTo(String value) {
+            addCriterion("LOGIN >=", value, "login");
             return (Criteria) this;
         }
 
-        public Criteria andPlantTypeIdLessThan(Integer value) {
-            addCriterion("PLANT_TYPE_ID <", value, "plantTypeId");
+        public Criteria andLoginLessThan(String value) {
+            addCriterion("LOGIN <", value, "login");
             return (Criteria) this;
         }
 
-        public Criteria andPlantTypeIdLessThanOrEqualTo(Integer value) {
-            addCriterion("PLANT_TYPE_ID <=", value, "plantTypeId");
+        public Criteria andLoginLessThanOrEqualTo(String value) {
+            addCriterion("LOGIN <=", value, "login");
             return (Criteria) this;
         }
 
-        public Criteria andPlantTypeIdIn(List<Integer> values) {
-            addCriterion("PLANT_TYPE_ID in", values, "plantTypeId");
+        public Criteria andLoginLike(String value) {
+            addCriterion("LOGIN like", value, "login");
             return (Criteria) this;
         }
 
-        public Criteria andPlantTypeIdNotIn(List<Integer> values) {
-            addCriterion("PLANT_TYPE_ID not in", values, "plantTypeId");
+        public Criteria andLoginNotLike(String value) {
+            addCriterion("LOGIN not like", value, "login");
             return (Criteria) this;
         }
 
-        public Criteria andPlantTypeIdBetween(Integer value1, Integer value2) {
-            addCriterion("PLANT_TYPE_ID between", value1, value2, "plantTypeId");
+        public Criteria andLoginIn(List<String> values) {
+            addCriterion("LOGIN in", values, "login");
             return (Criteria) this;
         }
 
-        public Criteria andPlantTypeIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("PLANT_TYPE_ID not between", value1, value2, "plantTypeId");
+        public Criteria andLoginNotIn(List<String> values) {
+            addCriterion("LOGIN not in", values, "login");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginBetween(String value1, String value2) {
+            addCriterion("LOGIN between", value1, value2, "login");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginNotBetween(String value1, String value2) {
+            addCriterion("LOGIN not between", value1, value2, "login");
             return (Criteria) this;
         }
 

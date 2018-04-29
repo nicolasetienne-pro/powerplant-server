@@ -26,4 +26,29 @@ public class SpringConfiguration {
         return objectMapper;
     }
 
+
+//    @Bean
+//    public AuthDynamicFeature authDynamicFeature(OAuthCredentialAuthFilter oAuthCredentialAuthFilter) {
+//        return new AuthDynamicFeature(oAuthCredentialAuthFilter);
+//    }
+//
+//    @Bean
+//    public AuthValueFactoryProvider authValueFactoryProvider() {
+//        return new AuthValueFactoryProvider.Binder<>();
+//    }
+//    @Bean
+//    public RolesAllowedDynamicFeature rolesAllowedDynamicFeature(){
+//        return new RolesAllowedDynamicFeature();
+//    }
+//
+//    @Bean
+//    public OAuthCredentialAuthFilter oAuthCredentialAuthFilter() {
+//        return new OAuthCredentialAuthFilter.Builder<>()
+//                .setAuthenticator(new ExampleOAuthAuthenticator())
+//                .setAuthorizer(new ExampleAuthorizer())
+//                .setPrefix("Bearer")
+//                .buildAuthFilter();
+//    }
+
+
 }

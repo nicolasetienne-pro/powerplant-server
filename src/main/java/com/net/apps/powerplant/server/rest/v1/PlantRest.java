@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.SecurityContext;
 
 @Component
 public class PlantRest implements PlantRestApi {
@@ -17,32 +16,32 @@ public class PlantRest implements PlantRestApi {
     private PlantApiService delegate;
 
     @Override
-    public Response addPlant(Plant body, SecurityContext securityContext) throws NotFoundException {
-        return delegate.addPlant(body, securityContext);
+    public Response addPlant(Plant body) throws NotFoundException {
+        return delegate.addPlant(body);
     }
 
     @Override
-    public Response deletePlant(Long plantId, String apiKey, SecurityContext securityContext) throws NotFoundException {
-        return delegate.deletePlant(plantId, apiKey, securityContext);
+    public Response deletePlant(Long plantId) throws NotFoundException {
+        return delegate.deletePlant(plantId);
     }
 
     @Override
-    public Response getPlantById(String plantId, SecurityContext securityContext) throws NotFoundException {
-        return delegate.getPlantById(StringUtils.isNotBlank(plantId) ? Integer.valueOf(plantId): null, securityContext);
+    public Response getPlantById(String plantId) throws NotFoundException {
+        return delegate.getPlantById(StringUtils.isNotBlank(plantId) ? Integer.valueOf(plantId): null);
     }
 
     @Override
-    public Response getPlants(SecurityContext securityContext) throws NotFoundException {
-        return delegate.getPlants(securityContext);
+    public Response getPlants() throws NotFoundException {
+        return delegate.getPlants();
     }
     @Override
-    public Response getPlantsTypes(SecurityContext securityContext) throws NotFoundException {
-        return delegate.getPlantsTypes(securityContext);
+    public Response getPlantsTypes() throws NotFoundException {
+        return delegate.getPlantsTypes();
     }
 
     @Override
-    public Response updatePlant(Plant body, SecurityContext securityContext)
+    public Response updatePlant(Plant body)
             throws NotFoundException {
-        return delegate.updatePlant(body, securityContext);
+        return delegate.updatePlant(body);
     }
 }

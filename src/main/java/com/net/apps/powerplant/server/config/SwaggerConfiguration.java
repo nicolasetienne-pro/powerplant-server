@@ -14,13 +14,16 @@ import io.swagger.models.Swagger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.ws.rs.core.HttpHeaders;
+
 @Configuration
 @SwaggerDefinition(securityDefinition = @SecurityDefinition(
         apiKeyAuthDefinitions = {
                 @ApiKeyAuthDefinition(
                         in = ApiKeyAuthDefinition.ApiKeyLocation.HEADER,
                         key = "api_key",
-                        name = "api_key")},
+                        name = HttpHeaders.AUTHORIZATION)},
+
         oAuth2Definitions = {
                 @OAuth2Definition(
                         key = "plant_auth",
@@ -58,41 +61,7 @@ public class SwaggerConfiguration implements ReaderListener {
         beanConfig.setHost("localhost:8080");
         beanConfig.setBasePath("/api");
         beanConfig.setResourcePackage("com.net.apps.powerplant.server");
-
         beanConfig.setScan(true);
-
-//        io.swagger.models.Info info = new io.swagger.models.Info()
-//                .title("Swagger Sample App")
-//                .description("This is a sample server Petstore server.  You can find out more about Swagger " +
-//                        "at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, " +
-//                        "you can use the api key `special-key` to test the authorization filters.")
-//                .termsOfService("http://helloreverb.com/terms/")
-//                .contact(new io.swagger.models.Contact()
-//                        .email("apiteam@swagger.io"))
-//                .license(new io.swagger.models.License()
-//                        .name("Apache 2.0")
-//                        .url("http://www.apache.org/licenses/LICENSE-2.0.html"));
-//
-//        Swagger swagger = beanConfig.getSwagger();
-//        swagger.info(info);
-//        swagger.externalDocs(new io.swagger.models.ExternalDocs("Find out more about Swagger", "http://swagger.io"));
-//        swagger.securityDefinition("api_key", new io.swagger.models.auth.ApiKeyAuthDefinition("api_key", In.HEADER));
-//        swagger.securityDefinition("petstore_auth",
-//                new io.swagger.models.auth.OAuth2Definition()
-//                        .implicit("http://petstore.swagger.io/api/oauth/dialog")
-//                        .scope("read:pets", "read your pets")
-//                        .scope("write:pets", "modify pets in your account"));
-//        swagger.tag(new io.swagger.models.Tag()
-//                .name("pet")
-//                .description("Everything about your Pets")
-//                .externalDocs(new io.swagger.models.ExternalDocs("Find out more", "http://swagger.io")));
-//        swagger.tag(new io.swagger.models.Tag()
-//                .name("store")
-//                .description("Access to Petstore orders"));
-//        swagger.tag(new io.swagger.models.Tag()
-//                .name("user")
-//                .description("Operations about user")
-//                .externalDocs(new io.swagger.models.ExternalDocs("Find out more about our store", "http://swagger.io")));
 
         return beanConfig;
     }

@@ -18,7 +18,7 @@ public class ReleveRest implements ReleveRestApi {
     private ReleveApiService delegate;
 
     @Override
-    public Response addReleve(Releve releve, SecurityContext securityContext) {
+    public Response addReleve(Releve releve) {
         try {
             Releve releveAdded = delegate.addReleve(releve);
             return Response.ok().entity(releveAdded).build();
@@ -29,7 +29,7 @@ public class ReleveRest implements ReleveRestApi {
     }
 
     @Override
-    public Response getReleves(Integer plantId, Integer userId, SecurityContext securityContext){
+    public Response getReleves(Integer plantId, Integer userId){
         try {
             List<Releve> releves = delegate.getReleves(plantId, userId);
             return Response.ok().entity(releves).build();

@@ -11,3 +11,16 @@ Health Check
 ---
 
 To see your applications health enter url `http://localhost:8081/healthcheck`
+
+
+Swagger UI
+---
+
+The swagger interface is accessible on following url : `http://localhost:8080/swagger-ui/`
+
+
+
+Java Doc 
+---
+
+The javadoc is availabe on followingurl: `http://localhost:8080/apidocs/`

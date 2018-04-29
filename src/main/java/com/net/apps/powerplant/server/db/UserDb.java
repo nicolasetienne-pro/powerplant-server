@@ -3,7 +3,7 @@ package com.net.apps.powerplant.server.db;
 public class UserDb {
     private Integer id;
 
-    private Integer plantTypeId;
+    private String login;
 
     private String firstName;
 
@@ -21,12 +21,12 @@ public class UserDb {
         this.id = id;
     }
 
-    public Integer getPlantTypeId() {
-        return plantTypeId;
+    public String getLogin() {
+        return login;
     }
 
-    public void setPlantTypeId(Integer plantTypeId) {
-        this.plantTypeId = plantTypeId;
+    public void setLogin(String login) {
+        this.login = login == null ? null : login.trim();
     }
 
     public String getFirstName() {

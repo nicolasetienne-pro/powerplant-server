@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+import javax.annotation.security.PermitAll;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -21,6 +22,7 @@ public interface PingRestApi {
     @ApiOperation(value = "Fait un ping", notes = "", response = Void.class, tags = {"statut",})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "successful operation", response = Void.class)})
+    @PermitAll
     default Response ping(){
         return Response.status(Response.Status.METHOD_NOT_ALLOWED).build();
     }
