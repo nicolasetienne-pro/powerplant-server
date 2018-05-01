@@ -15,7 +15,7 @@ import lombok.ToString;
 @ToString
 public class User   {
   @ApiModelProperty(value = "Id")
-  private Long id = null;
+  private Integer id = null;
 
   @ApiModelProperty(value = "User login")
   private String username = null;
@@ -32,7 +32,7 @@ public class User   {
   @ApiModelProperty(value = "User Status")
   private Integer userStatus = null;
 
-  public User id(Long id) {
+  public User id(Integer id) {
     this.id = id;
     return this;
   }
